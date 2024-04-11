@@ -37,7 +37,32 @@ pr($find);
 )
 ~~~
 
+## mysql 
 
+~~~
+
+CREATE TABLE `faceplus_detect` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uni` varchar(255) NOT NULL,
+  `face_token` varchar(255) NOT NULL,
+  `outer_id` varchar(255) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `age` varchar(10) NOT NULL,
+  `beauty` varchar(200) NOT NULL,
+  `glass` varchar(10) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `faceplus_outer_id` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `outer_id` varchar(255) NOT NULL,
+  `face_tokens` text NOT NULL,
+  `num` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+~~~
 
 
 ### 开源协议 
