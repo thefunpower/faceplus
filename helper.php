@@ -42,7 +42,7 @@ class faceplus{
             $outer_id = time();
             db_insert("faceplus_outer_id",[
                 'outer_id'=>$outer_id,
-                'count'=>0
+                'num'=>0
             ]);
             return $outer_id;
         }else{
@@ -200,7 +200,7 @@ class faceplus{
     /**
     * 人脸比对
     */
-    public function get_search($find_face_token){ 
+    public function get_search($find_face_token,$point = 85){ 
         $all = $this->get_all_outer_id(); 
         foreach($all as $outer_id){
             $arr = [
@@ -217,8 +217,8 @@ class faceplus{
             $res = json_decode($res,true); 
             $results = $res['results'][0];
             $confidence = $results['confidence'];
-            $face_token = $results['face_token']; 
-            if($confidence > 85){
+            $face_token = $results['face_token'];  
+            if($confidence > $point){
                 return ['data'=>['facetoken'=>$face_token,'confidence'=>$confidence,'flag'=>true],'code'=>0,'type'=>'success'];
             }
         }
